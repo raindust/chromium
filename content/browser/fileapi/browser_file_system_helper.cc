@@ -62,10 +62,11 @@ FileSystemOptions CreateBrowserFileSystemOptions(bool is_incognito) {
   std::vector<std::string> additional_allowed_schemes;
   GetContentClient()->browser()->GetAdditionalAllowedSchemesForFileSystem(
       &additional_allowed_schemes);
-  if (base::CommandLine::ForCurrentProcess()->HasSwitch(
-          switches::kAllowFileAccessFromFiles)) {
+// allow file access from files all the time
+//   if (base::CommandLine::ForCurrentProcess()->HasSwitch(
+//          switches::kAllowFileAccessFromFiles)) {
     additional_allowed_schemes.push_back(url::kFileScheme);
-  }
+//   }
   return FileSystemOptions(profile_mode, is_incognito,
                            additional_allowed_schemes);
 }
